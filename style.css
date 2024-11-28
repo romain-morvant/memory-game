@@ -33,6 +33,9 @@ html {
   width: 90vmin;
   height: 90vmin;
   border-radius: var(--gap);
+  display: grid;
+  gap: var(--gap);
+  padding: var(--gap);
 }
 
 .modal {
