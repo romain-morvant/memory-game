@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+  /* Set 1 rem to 10px */
+  font-size: 62.5%;
+}
+
+:root {
+  --white: #fff;
+  --light-gray: #555;
+  --gray: #222;
+  --blue: #119ec9;
+  --grid-cell: 6;
+  --gap: 1rem;
+  --time: 0.5s;
+}
+
+.container {
+  height: 100svh;
+  display: grid;
+  place-items: center;
+}
+
+.playground {
+  background-color: #f7eedd;
+  width: 90vmin;
+  height: 90vmin;
+  border-radius: var(--gap);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(119, 118, 115, 0.604);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: var(--gap);
+  width: 40rem;
+  aspect-ratio: 1;
+  background-color: rgba(255, 255, 255, 0.863);
+  border-radius: var(--gap);
+}
+
+.modal-heading {
+  font-size: 4rem;
+  color: var(--light-gray);
+  margin-bottom: var();
+}
+
+.modal-time {
+  display: flex;
+  align-items: center;
+  column-gap: var(--gap);
+}
+
+.modal-time > span {
+  font-size: 1.8rem;
+  color: var(--gray);
+}
+
+.modal-text {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--light-gray);
+}
+
+.btn {
+  box-sizing: content-box;
+  padding: 0.5rem 1rem;
+  background-color: var(--blue);
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: var(--white);
+  margin-top: 2rem;
+  cursor: pointer;
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  column-gap: 3rem;
+}
+
+.features .restart-btn {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.timer {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.3rem;
+  color: var(--blue);
+}
+
+.timer span {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.6rem;
+  width: 2.7rem;
+}
+
+.timer span:last-child {
+  margin-left: 0.5rem;
+}
