@@ -16,6 +16,11 @@ class Elements {
     this.modal = document.querySelector(".modal");
     this.modalBtn = document.querySelector(".modal-btn");
     this.wrong = document.querySelector(".wrong");
+    this.restartBtn = document.querySelector(".restart-btn");
+    this.timer = document.querySelector(".timer");
+    this.modalTime = document.querySelector(".modal-time");
+
+    this.restartGame();
   }
 
   // Mélange des index des images avant disposition
@@ -64,6 +69,24 @@ class Elements {
       card.append(img);
       this.playground.append(card);
     });
+  }
+
+  // Redémarrage du jeu
+  restartGame() {
+    this.restartBtn.onclick = () => {
+      this.modal.style.cssText =
+        "visibility: visible; opacity: 1; transition: opacity .5s";
+      const modalContent = this.modal.firstElementChild;
+      modalContent.innerHTML =
+        "<h2 class='modal-text'>Veux tu nous quitter ? :(</h2><div><button class='btn yes-btn'>Oui :D</button><button class='btn cancel-btn'>Non !</button></div>";
+      modalContent.querySelector(".cancel-btn").onclick = () => {
+        this.modal.style.cssText =
+          "visibility: hidden;opacity:0;transition: opacity .5s";
+      };
+      modalContent.querySelector(".yes-btn").onclick = () => {
+        location.reload();
+      };
+    };
   }
 }
 

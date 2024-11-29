@@ -5,6 +5,8 @@ class Controller {
     this.elements = new Elements(cardsNumber);
     this.prevCard;
     this.clickCard();
+    this.startClock = true;
+    this.time;
   }
 
   clickCard() {
@@ -13,6 +15,7 @@ class Controller {
     cards.forEach((card) => {
       // Incrémentation de la valeur 'click'
       card.addEventListener("click", () => {
+        this.startClock && this.setTime();
         attempts.click++;
         card.classList.add("change");
         // Si deux cartes sont retournées (ont la classe change)
@@ -53,20 +56,43 @@ class Controller {
         } else {
           this.prevCard = card;
         }
+        this.startClock = false;
       });
     });
   }
 
   endGame({ correct }) {
-    const { cardsNumber, modal, modalBtn, wrong, attempts } = this.elements;
+    const { cardsNumber, modal, modalBtn, wrong, attempts, timer, modalTime } =
+      this.elements;
     if (correct === cardsNumber / 2) {
       console.log("Bien ouèj!");
+      this.startClock = true;
+      this.stopTime();
       modal.style.cssText = "visibility: visible; opacity:1;";
+      const timerClone = timer.cloneNode(true);
+      modalTime.append(timerClone);
       wrong.textContent = attempts.wrong;
       modalBtn.onclick = () => location.reload();
     } else {
       console.log("Pas encore :/");
     }
+  }
+
+  setTime() {
+    let int = 1;
+    const { timer } = this.elements;
+
+    this.time = setInterval(() => {
+      const seconds = int % 60;
+      timer.children[1].innerHTML = seconds > 9 ? seconds : `0${seconds}`;
+      const minutes = Math.floor(int / 60);
+      timer.children[0].innerHTML = minutes > 9 ? minutes : `0${minutes}`;
+      int++;
+    }, 1000);
+  }
+
+  stopTime() {
+    clearInterval(this.time);
   }
 }
 

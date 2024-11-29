@@ -45,6 +45,15 @@ html {
   place-items: center;
   border-radius: inherit;
   cursor: pointer;
+  perspective: 100rem;
+  transform: rotateY(180deg);
+  transition: transform var(--time) var(--time) linear;
+}
+
+.card.change {
+  pointer-events: none;
+  transform: rotateY(0);
+  transition: transform var(--time) linear;
 }
 
 .card.pause {
@@ -61,10 +70,15 @@ html {
   object-fit: scale-down;
   background-color: var(--white);
   border-radius: inherit;
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+  transition: transform var(--time) var(--time) linear;
+  backface-visibility: hidden;
 }
 
 .card.change img {
-  background-color: green;
+  transform: rotateY(0);
+  transition: transform var(--time) linear;
 }
 
 .modal {
@@ -75,6 +89,7 @@ html {
   place-items: center;
   opacity: 0;
   visibility: hidden;
+  transition: opacity var(--time) 1s;
 }
 
 .modal-content {
@@ -113,6 +128,12 @@ html {
   color: var(--light-gray);
 }
 
+.wrong {
+  display: inline-block;
+  margin: 0.5rem;
+  font-size: 2.5rem;
+}
+
 .btn {
   box-sizing: content-box;
   padding: 0.5rem 1rem;
@@ -125,6 +146,12 @@ html {
   color: var(--white);
   margin-top: 2rem;
   cursor: pointer;
+}
+
+.yes-btn,
+.cancel-btn {
+  margin-inline: 0.5rem;
+  width: 7rem;
 }
 
 .features {
@@ -152,4 +179,20 @@ html {
 
 .timer span:last-child {
   margin-left: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --gap: 0.5rem;
+  }
+
+  .playground {
+    width: 95vmin;
+    height: 95vmin;
+  }
+
+  .modal-content {
+    width: 30rem;
+    text-align: center;
+  }
 }
